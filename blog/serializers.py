@@ -18,4 +18,5 @@ class PostSerializer(ModelSerializer):
             "author",
             "slug",
             "status",
+            "is_featured",
         ]

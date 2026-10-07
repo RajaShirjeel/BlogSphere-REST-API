@@ -13,9 +13,11 @@ class Post(models.Model):
     status = models.CharField(max_length=1, choices=STATUSES, default="D")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    is_featured = models.BooleanField(default=False)
 
     def __str__(self):
         return f"{self.title} - {self.created_at}"
 
     class Meta:
         ordering = ["-created_at"]
+        permissions = [("feature_post", "Can feature a post")]
