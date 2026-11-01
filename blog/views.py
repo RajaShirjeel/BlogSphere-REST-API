@@ -3,7 +3,7 @@ from rest_framework import viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework.filters import SearchFilter, OrderingFilter
+from rest_framework.filters import SearchFilter
 
 from .serializers import PostSerializer
 from .models import Post
@@ -13,7 +13,7 @@ from .filters import PostFilter, PostOrderingFilter
 
 class PostViewSet(viewsets.ModelViewSet):
     serializer_class = PostSerializer
-    queryset = Post.objects.all()
+    queryset = Post.objects.filter(status="P")
     permission_classes = [IsAuthenticatedOrReadOnly, IsAuthorOrReadOnly]
     filter_backends = [DjangoFilterBackend, SearchFilter, PostOrderingFilter]
     search_fields = ["title", "author__username", "content"]

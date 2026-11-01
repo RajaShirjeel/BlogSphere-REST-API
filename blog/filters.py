@@ -22,4 +22,4 @@ class PostOrderingFilter(OrderingFilter):
 class PostFilter(FilterSet):
     class Meta:
         model = Post
-        fields = {"status": ["exact"], "created_at": ["gt", "lt"]}
+        fields = {"created_at": ["gt", "lt"]}
